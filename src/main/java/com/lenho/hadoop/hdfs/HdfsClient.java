@@ -1,4 +1,4 @@
-package com.lenho.hdfs;
+package com.lenho.hadoop.hdfs;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
@@ -16,8 +16,8 @@ public class HdfsClient {
     public void testUploadFile() throws Exception{
 
         Configuration configuration = new Configuration();
-        configuration.set("fs.defaultFS", "hdfs://hadoop11:8020");
-        FileSystem fileSystem = FileSystem.get(URI.create("hdfs://hadoop11:8020"), configuration, "root");
+        configuration.set("fs.defaultFS", "com.lenho.hadoop.mapreduce.hdfs://hadoop11:8020");
+        FileSystem fileSystem = FileSystem.get(URI.create("com.lenho.hadoop.mapreduce.hdfs://hadoop11:8020"), configuration, "root");
 //        fileSystem.copyFromLocalFile(new Path("C:\\Users\\langyonghe\\Desktop\\数据.txt"),new Path("/input")); //上传
         fileSystem.delete(new Path("/output"),true); //删除
 //        fileSystem.copyToLocalFile(new Path("/config.ini"),new Path("d:/")); //存到本地

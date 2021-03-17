@@ -1,11 +1,10 @@
-package com.lenho.mapreduce;
+package com.lenho.hadoop.mapreduce;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
@@ -17,10 +16,10 @@ public class WordcountDriver {
 
     public static void main(String[] args) throws Exception {
         Configuration configuration = new Configuration();
-        configuration.set("fs.defaultFS", "hdfs://192.168.130.11:8020");
-        configuration.set("mapreduce.framework.name","yarn");
-        configuration.set("mapreduce.app-submission.cross-platform","true");
-        configuration.set("yarn.resourcemanager.hostname","192.168.130.12");
+//        configuration.set("fs.defaultFS", "com.lenho.hadoop.mapreduce.hdfs://192.168.130.11:8020");
+//        configuration.set("com.lenho.hadoop.mapreduce.framework.name","yarn");
+//        configuration.set("mapreduce.app-submission.cross-platform","true");
+//        configuration.set("yarn.resourcemanager.hostname","192.168.130.12");
 
 
         Job wordCountJob = Job.getInstance(configuration, "word count");

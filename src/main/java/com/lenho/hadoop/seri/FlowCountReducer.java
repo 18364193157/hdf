@@ -1,4 +1,4 @@
-package com.lenho.seri;
+package com.lenho.hadoop.seri;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;

@@ -1,4 +1,4 @@
-package com.lenho.mapreduce;
+package com.lenho.hadoop.mapreduce;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
@@ -16,7 +16,7 @@ public class WordcountMapper extends Mapper<LongWritable,Text,Text, IntWritable>
 
     /**
      *
-     * @param key 行号
+     * @param key 行号 框架把文件数据拆成一行一行的，然后再输出出去
      * @param value  一行的数据
      * @param context
      * @throws IOException

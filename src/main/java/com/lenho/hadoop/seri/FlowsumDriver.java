@@ -1,4 +1,4 @@
-package com.lenho.seri;
+package com.lenho.hadoop.seri;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -15,11 +15,9 @@ public class FlowsumDriver {
 
     public static void main(String[] args) throws Exception{
 
-        args = new String[] { "C:/Users/langyonghe/Desktop/input", "C:/Users/langyonghe/Desktop/output" };
-
         Job flowSumJob = Job.getInstance(new Configuration(), "flow sum");
-
-        flowSumJob.setJarByClass(FlowsumDriver.class);
+        flowSumJob.setJar("D:\\hdfslearning\\target\\hdfslearning-1.0-SNAPSHOT.jar");
+//        flowSumJob.setJarByClass(FlowsumDriver.class);
         flowSumJob.setMapperClass(FlowCountMapper.class);
         flowSumJob.setReducerClass(FlowCountReducer.class);
 
@@ -28,6 +26,9 @@ public class FlowsumDriver {
 
         flowSumJob.setOutputKeyClass(Text.class);
         flowSumJob.setOutputValueClass(FlowBean.class);
+
+        flowSumJob.setPartitionerClass(ProvincePartitioner.class);
+        flowSumJob.setNumReduceTasks(5);
 
         FileInputFormat.setInputPaths(flowSumJob,new Path(args[0]));
         FileOutputFormat.setOutputPath(flowSumJob,new Path(args[1]));

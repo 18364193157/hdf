@@ -1,16 +1,18 @@
-package com.lenho.seri;
+package com.lenho.hadoop.seri;
 
-import org.apache.hadoop.io.Writable;
+import org.apache.hadoop.io.WritableComparable;
 
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
 
 /**
+ * WritableComparable: 序列化、反序列化和排序
+ * 因为MapReduce自定的集中基本类型不满足需求，定义对象就要实现writable和Comparable接口，分别用于序列化、反序列化和shuffle阶段的排序
  * @author langyonghe
  * @date 2020/11/9 10:25
  */
-public class FlowBean implements Writable {
+public class FlowBean implements WritableComparable<FlowBean> {
 
     private long upFlow;
     private long downFlow;
@@ -70,5 +72,17 @@ public class FlowBean implements Writable {
     @Override
     public String toString() {
         return upFlow + "\t" + downFlow + "\t" + sumFlow;
+    }
+
+    public int compareTo(FlowBean bean) {
+        int result;
+        if(sumFlow > bean.getSumFlow()) {
+            result = -1;
+        } else if(sumFlow < bean.getSumFlow()) {
+            result = 1;
+        } else {
+            result = 0;
+        }
+        return result;
     }
 }
