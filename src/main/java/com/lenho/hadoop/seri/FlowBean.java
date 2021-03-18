@@ -30,6 +30,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
     }
 
     // 写序列化方法
+    @Override
     public void write(DataOutput dataOutput) throws IOException {
         dataOutput.writeLong(upFlow);
         dataOutput.writeLong(downFlow);
@@ -38,6 +39,7 @@ public class FlowBean implements WritableComparable<FlowBean> {
     }
 
     //反序列化方法(顺寻与序列化保持一致)
+    @Override
     public void readFields(DataInput dataInput) throws IOException {
         this.upFlow = dataInput.readLong();
         this.downFlow = dataInput.readLong();

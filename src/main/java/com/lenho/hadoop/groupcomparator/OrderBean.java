@@ -49,6 +49,7 @@ public class OrderBean implements WritableComparable<OrderBean> {
     }
 
 
+    @Override
     public int compareTo(OrderBean o) {
 
         int result;
@@ -62,11 +63,13 @@ public class OrderBean implements WritableComparable<OrderBean> {
         return result;
     }
 
+    @Override
     public void write(DataOutput dataOutput) throws IOException {
         dataOutput.writeInt(orderId);
         dataOutput.writeDouble(price);
     }
 
+    @Override
     public void readFields(DataInput dataInput) throws IOException {
         orderId = dataInput.readInt();
         price = dataInput.readDouble();

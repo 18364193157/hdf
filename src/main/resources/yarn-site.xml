@@ -50,7 +50,7 @@
   <property>
     <description>The hostname of the RM.</description>
     <name>yarn.resourcemanager.hostname</name>
-    <value>0.0.0.0</value>
+    <value>192.168.130.12</value>
   </property>    
   
   <property>
@@ -704,8 +704,45 @@
     <description>The setting that controls whether yarn system metrics is
     published on the timeline server or not by RM.</description>
     <name>yarn.resourcemanager.system-metrics-publisher.enabled</name>
-    <value>false</value>
+    <value>true</value>
   </property>
+
+  
+
+
+
+
+  <property>
+    <name>yarn.timeline-service.http-cross-origin.enabled</name>
+    <value>true</value>
+  </property>
+  <property>
+    <name>yarn.log.server.url</name>
+    <value>http://192.168.130.11:19888/applicationhistory/logs</value>
+  </property>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <property>
     <description>Number of worker threads that send the yarn system metrics
@@ -880,13 +917,13 @@
       Application Timeline Server.
     </description>
     <name>yarn.log-aggregation-enable</name>
-    <value>false</value>
+    <value>true</value>
   </property>
 
   <property>
     <description>How long to keep aggregation logs before deleting them.  -1 disables. 
     Be careful set this too small and you will spam the name node.</description>
-    <name>yarn.log-aggregation.retain-seconds</name>
+    <name>yarn.log-aggregation.retain-seconds</name>yarn.timeline-service.enabled
     <value>-1</value>
   </property> 
   
@@ -931,14 +968,14 @@
     <description>Whether physical memory limits will be enforced for
     containers.</description>
     <name>yarn.nodemanager.pmem-check-enabled</name>
-    <value>true</value>
+    <value>false</value>
   </property>
 
   <property>
     <description>Whether virtual memory limits will be enforced for
     containers.</description>
     <name>yarn.nodemanager.vmem-check-enabled</name>
-    <value>true</value>
+    <value>false</value>
   </property>
 
   <property>
@@ -1329,7 +1366,7 @@
   <property>
     <description>The hostname of the timeline service web application.</description>
     <name>yarn.timeline-service.hostname</name>
-    <value>0.0.0.0</value>
+    <value>${yarn.resourcemanager.hostname}</value>
   </property>
 
   <property>

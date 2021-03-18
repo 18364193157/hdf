@@ -75,12 +75,12 @@
     It can also be specified per name node or name service for HA/Federation.
     This is useful for making the name node listen on all interfaces by
     setting it to 0.0.0.0.
-  </description>
+  </description>dfs.permissions.enabled
 </property>
 
 <property>
   <name>dfs.namenode.secondary.http-address</name>
-  <value>0.0.0.0:50090</value>
+  <value>192.168.130.13:9868</value>
   <description>
     The secondary namenode http server address and port.
   </description>
@@ -356,7 +356,7 @@
 
 <property>
   <name>dfs.permissions.enabled</name>
-  <value>true</value>
+  <value>false</value>
   <description>
     If "true", enable permission checking in HDFS.
     If "false", permission checking is turned off,
