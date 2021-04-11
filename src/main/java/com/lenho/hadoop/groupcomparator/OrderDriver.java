@@ -15,12 +15,14 @@ import java.io.IOException;
  */
 public class OrderDriver {
 
+    private static final String JAR_PATH = "D:\\hdfslearning\\target\\hdfslearning-1.0-SNAPSHOT.jar";
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
         Job job = Job.getInstance(new Configuration());
 
-        job.setJar("D:\\hdfslearning\\target\\hdfslearning-1.0-SNAPSHOT.jar");
+        job.setJar(JAR_PATH);
+        job.setJarByClass(OrderDriver.class);
         job.setMapperClass(OrderMapper.class);
         job.setReducerClass(OrderReducer.class);
         job.setMapOutputKeyClass(OrderBean.class);
